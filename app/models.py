@@ -6,6 +6,7 @@ class Brand(models.Model):
     name = models.CharField(
         max_length=255, null=False, blank=False
     )
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -18,6 +19,7 @@ class AutoModel(models.Model):
     brand = models.ForeignKey(
         Brand, on_delete=models.CASCADE
     )
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -37,6 +39,7 @@ class Vehicle(models.Model):
     license_plate = models.CharField(
         max_length=7, null=False, blank=False
     )
+    is_active = models.BooleanField(default=False)
 
     @property
     def vehicle(self):
@@ -51,6 +54,7 @@ class Service(models.Model):
         max_length=255, null=False, blank=False
     )
     value = models.IntegerField()
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -67,6 +71,7 @@ class Maintenance(models.Model):
     km_vehicle = models.IntegerField()
     date = models.DateField(auto_now_add=True)
     next_date = models.DateField()
+    is_finished = models.BooleanField(default=False)
 
     def __str__(self):
         return self.owner
