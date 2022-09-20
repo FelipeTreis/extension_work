@@ -43,6 +43,6 @@ class ServiceViewSet(viewsets.ModelViewSet):
 
 
 class MaintenanceViewSet(viewsets.ModelViewSet):
-    queryset = Maintenance.objects.filter(is_active=True)
+    queryset = Maintenance.objects.filter(is_finished=True)
     serializer_class = MaintenanceSerializer
     pagination_class = Pagination
