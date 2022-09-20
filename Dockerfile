@@ -13,7 +13,6 @@ RUN apk update && \
     apk add --virtual build-essential gcc python3-dev musl-dev && \
     apk add --no-cache postgresql-libs && \
     apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    pip install psycopg2 && \
     apk --purge del .build-deps
 
 # Copy libs
