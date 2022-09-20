@@ -10,6 +10,21 @@ router = SimpleRouter()
 router.register(
     'users', viewsets.UserViewSet, basename='users'
 )
+router.register(
+    'brands', viewsets.BrandViewSet, basename='brands'
+)
+router.register(
+    'automodels', viewsets.AutoModelViewSet, basename='automodel'
+)
+router.register(
+    'vehicles', viewsets.VehicleViewSet, basename='vehicles'
+)
+router.register(
+    'services', viewsets.ServiceViewSet, basename='services'
+)
+router.register(
+    'maintenance', viewsets.MaintenanceViewSet, basename='maintenance'
+)
 
 urlpatterns = [
     path(
