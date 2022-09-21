@@ -27,6 +27,8 @@ class AutoModelSerializer(serializers.ModelSerializer):
             'name',
         )
 
+    brand = serializers.CharField()
+
 
 class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,6 +39,8 @@ class VehicleSerializer(serializers.ModelSerializer):
             'manufacture_year',
             'license_plate',
         )
+
+    brand = serializers.CharField()
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -55,12 +59,15 @@ class MaintenanceSerializer(serializers.ModelSerializer):
             'owner',
             'vehicle',
             'service',
+            'full_value',
             'km_vehicle',
             'date',
             'next_date',
-            'new_maintenance'
+            'new_maintenance',
         )
 
+    owner = serializers.CharField()
+    vehicle = serializers.CharField()
     date = serializers.CharField()
     next_date = serializers.CharField()
     new_maintenance = serializers.CharField()
