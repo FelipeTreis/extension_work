@@ -1,5 +1,12 @@
+from datetime import timedelta
+
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.timezone import now
+
+
+def expiration():
+    return now() + timedelta(days=180)
 
 
 class Brand(models.Model):
@@ -37,7 +44,8 @@ class Vehicle(models.Model):
     )
     manufacture_year = models.DateField()
     license_plate = models.CharField(
-        max_length=7, null=False, blank=False
+        max_length=7, null=False, blank=False,
+        unique=True
     )
     is_active = models.BooleanField(default=False)
 
@@ -70,12 +78,18 @@ class Maintenance(models.Model):
     service = models.ManyToManyField(Service)
     km_vehicle = models.IntegerField()
     date = models.DateField(auto_now_add=True)
-    next_date = models.DateField()
+    next_date = models.DateField(default=expiration, auto_created=True)
+    is_started = models.BooleanField(default=False)
     is_finished = models.BooleanField(default=False)
 
     @property
     def new_maintenance(self):
-        return self.date - self.next_date
+        return self.next_date - self.date
 
-    def __str__(self):
-        return self.owner
+    @property
+    def full_value(self):
+        services = self.service.all()
+        value = 0
+        for service in services:
+            value += service.value
+        return value
