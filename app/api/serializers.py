@@ -57,8 +57,10 @@ class MaintenanceSerializer(serializers.ModelSerializer):
             'service',
             'km_vehicle',
             'date',
-            'next_date'
+            'next_date',
+            'new_maintenance'
         )
 
     date = serializers.CharField()
     next_date = serializers.CharField()
+    new_maintenance = serializers.CharField()

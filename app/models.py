@@ -73,5 +73,9 @@ class Maintenance(models.Model):
     next_date = models.DateField()
     is_finished = models.BooleanField(default=False)
 
+    @property
+    def new_maintenance(self):
+        return self.date - self.next_date
+
     def __str__(self):
         return self.owner
