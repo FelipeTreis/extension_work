@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
+            'id',
             'username',
         )
 
@@ -15,6 +16,7 @@ class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = (
+            'id',
             'name',
         )
 
@@ -23,6 +25,7 @@ class AutoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AutoModel
         fields = (
+            'id',
             'brand',
             'name',
         )
@@ -34,6 +37,7 @@ class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicle
         fields = (
+            'id',
             'vehicle',
             'brand',
             'manufacture_year',
@@ -47,6 +51,7 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = (
+            'id',
             'name',
             'value',
         )
@@ -56,6 +61,7 @@ class MaintenanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Maintenance
         fields = (
+            'id',
             'owner',
             'vehicle',
             'service',
