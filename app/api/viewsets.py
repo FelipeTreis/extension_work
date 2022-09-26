@@ -2,12 +2,12 @@ from app.api.serializers import (AutoModelSerializer, BrandSerializer,
                                  MaintenanceSerializer, ServiceSerializer,
                                  UserSerializer, VehicleSerializer)
 from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
-from app.permissions import IsOwner
 from decouple import config
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import (IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
 
 
 class Pagination(PageNumberPagination):
@@ -36,10 +36,15 @@ class AutoModelViewSet(viewsets.ModelViewSet):
 
 
 class VehicleViewSet(viewsets.ModelViewSet):
-    queryset = Vehicle.objects.filter(is_active=True)
     serializer_class = VehicleSerializer
     pagination_class = Pagination
-    permission_classes = [IsAuthenticatedOrReadOnly, ]
+    permission_classes = [IsAuthenticated, ]
+
+    def get_queryset(self):
+        return Vehicle.objects.filter(
+            is_active=True,
+            owner=self.request.user
+        )
 
 
 class ServiceViewSet(viewsets.ModelViewSet):
@@ -50,7 +55,12 @@ class ServiceViewSet(viewsets.ModelViewSet):
 
 
 class MaintenanceViewSet(viewsets.ModelViewSet):
-    queryset = Maintenance.objects.filter(is_finished=True)
     serializer_class = MaintenanceSerializer
     pagination_class = Pagination
-    permission_classes = [IsOwner, ]
+    permission_classes = [IsAuthenticated, ]
+
+    def get_queryset(self):
+        return Maintenance.objects.filter(
+            is_finished=True,
+            owner=self.request.user
+        )
