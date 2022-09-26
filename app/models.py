@@ -84,7 +84,7 @@ class Maintenance(models.Model):
 
     @property
     def new_maintenance(self):
-        return self.next_date - self.date
+        return self.next_date
 
     @property
     def full_value(self):
