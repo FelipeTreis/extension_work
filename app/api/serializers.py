@@ -69,11 +69,9 @@ class MaintenanceSerializer(serializers.ModelSerializer):
             'km_vehicle',
             'date',
             'next_date',
-            'new_maintenance',
         )
 
     owner = serializers.CharField()
     vehicle = serializers.CharField()
     date = serializers.CharField()
     next_date = serializers.CharField()
-    new_maintenance = serializers.CharField()

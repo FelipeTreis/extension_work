@@ -83,10 +83,6 @@ class Maintenance(models.Model):
     is_finished = models.BooleanField(default=False)
 
     @property
-    def new_maintenance(self):
-        return self.next_date
-
-    @property
     def full_value(self):
         services = self.service.all()
         value = 0
