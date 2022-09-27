@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.timezone import now
 
+from app.choices import VEHICLE_TYPE_CHOICES
+
 
 def expiration():
     return now() + timedelta(days=180)
@@ -25,6 +27,10 @@ class AutoModel(models.Model):
     )
     brand = models.ForeignKey(
         Brand, on_delete=models.CASCADE
+    )
+    type = models.CharField(
+        max_length=10, choices=VEHICLE_TYPE_CHOICES,
+        default='', null=False, blank=False
     )
     is_active = models.BooleanField(default=False)
 
