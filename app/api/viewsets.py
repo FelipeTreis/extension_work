@@ -6,7 +6,7 @@ from decouple import config
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import (IsAuthenticated,
+from rest_framework.permissions import (IsAdminUser, IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 
 
@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.filter(is_active=True)
     serializer_class = UserSerializer
     pagination_class = Pagination
-    permission_classes = [IsAuthenticatedOrReadOnly, ]
+    permission_classes = [IsAdminUser, ]
 
 
 class BrandViewSet(viewsets.ModelViewSet):
