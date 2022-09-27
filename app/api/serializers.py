@@ -28,6 +28,7 @@ class AutoModelSerializer(serializers.ModelSerializer):
             'id',
             'brand',
             'name',
+            'type',
         )
 
     brand = serializers.CharField()
