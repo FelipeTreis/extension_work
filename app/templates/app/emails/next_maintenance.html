@@ -1,8 +1,14 @@
 <h1>Próxima manutenção</h1>
 
 <p>
-    Olá, {{ name }}<br>
-    sua proxima manutenção vai ser dia {{ next_date }}<br><br>
+    Olá,<br>
+    sua proxima manutenção vai ser dia {{ data.next_date }}<br><br>
+
+    Informações da ultima manutenção:
+    <ul>
+        <li>{{ data.km_vehicle }}</li>
+        <li>{{ data.date }}</li>
+    </ul> 
 
     Aguardamos seu retorno!!!
 </p>
