@@ -21,10 +21,7 @@ def send_email(request):
     })
     text_content = strip_tags(html_content)
 
-    email = EmailMultiAlternatives(
-        mail_title, text_content, settings.EMAIL_HOST_USER,
-        ['felipetreis1@gmail.com']
-    )
+    email = EmailMultiAlternatives(mail_title, text_content, settings.EMAIL_HOST_USER, ['felipetreis1@gmail.com'])
     email.attach_alternative(html_content, 'text/html')
     email.send()
 

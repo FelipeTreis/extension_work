@@ -12,9 +12,7 @@ def expiration():
 
 
 class Brand(models.Model):
-    name = models.CharField(
-        max_length=255, null=False, blank=False
-    )
+    name = models.CharField(max_length=255, null=False, blank=False)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -22,16 +20,9 @@ class Brand(models.Model):
 
 
 class AutoModel(models.Model):
-    name = models.CharField(
-        max_length=255, null=False, blank=False
-    )
-    brand = models.ForeignKey(
-        Brand, on_delete=models.CASCADE
-    )
-    type = models.CharField(
-        max_length=10, choices=VEHICLE_TYPE_CHOICES,
-        default='', null=False, blank=False
-    )
+    name = models.CharField(max_length=255, null=False, blank=False)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    type = models.CharField(max_length=10, choices=VEHICLE_TYPE_CHOICES, default='', null=False, blank=False)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -39,20 +30,11 @@ class AutoModel(models.Model):
 
 
 class Vehicle(models.Model):
-    owner = models.ForeignKey(
-        User, on_delete=models.CASCADE
-    )
-    brand = models.ForeignKey(
-        Brand, on_delete=models.CASCADE
-    )
-    model = models.ForeignKey(
-        AutoModel, on_delete=models.CASCADE
-    )
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    model = models.ForeignKey(AutoModel, on_delete=models.CASCADE)
     manufacture_year = models.DateField()
-    license_plate = models.CharField(
-        max_length=7, null=False, blank=False,
-        unique=True
-    )
+    license_plate = models.CharField(max_length=7, null=False, blank=False, unique=True)
     is_active = models.BooleanField(default=False)
 
     @property
@@ -64,9 +46,7 @@ class Vehicle(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField(
-        max_length=255, null=False, blank=False
-    )
+    name = models.CharField(max_length=255, null=False, blank=False)
     value = models.IntegerField()
     is_active = models.BooleanField(default=False)
 
@@ -75,12 +55,8 @@ class Service(models.Model):
 
 
 class Maintenance(models.Model):
-    owner = models.ForeignKey(
-        User, on_delete=models.CASCADE
-    )
-    vehicle = models.ForeignKey(
-        Vehicle, on_delete=models.CASCADE
-    )
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     service = models.ManyToManyField(Service)
     km_vehicle = models.IntegerField()
     date = models.DateField(auto_now_add=True)

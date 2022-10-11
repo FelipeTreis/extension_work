@@ -45,9 +45,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Maintenance)
 class MaintenanceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'is_started', 'is_finished', 'owner',
-                    'vehicle', 'next_date'
-                    )
+    list_display = ('id', 'is_started', 'is_finished', 'owner', 'vehicle', 'next_date')
     list_display_links = ('owner', )
     list_editable = ('is_started', 'is_finished', )
     list_filter = ('owner', )
