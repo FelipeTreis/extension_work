@@ -1,13 +1,17 @@
 <h1>Próxima manutenção</h1>
 
 <p>
-    Olá,<br>
+    Olá, {{ request.user }}<br>
     sua proxima manutenção vai ser dia {{ data.next_date }}<br><br>
+<p/>
 
+<p>
     Informações da ultima manutenção:
     <ul>
-        <li>{{ data.km_vehicle }}</li>
-        <li>{{ data.date }}</li>
+        <li>Última manutenção: {{ data.date }}</li>
+        <li>Veículo: {{ data.vehicle }}</li>
+        <li>Quilometragem do veículo: {{ data.km_vehicle }}</li>
+        <li>Valor da manutenção: {{ data.full_value }}</li>
     </ul> 
 
     Aguardamos seu retorno!!!
