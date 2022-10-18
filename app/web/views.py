@@ -1,7 +1,6 @@
 from app.models import Maintenance
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -25,4 +24,4 @@ def send_email(request, id):
     email.attach_alternative(html_content, 'text/html')
     email.send()
 
-    return HttpResponse('sent email')
+    return render(request, 'app/emails/sent_email.html')
