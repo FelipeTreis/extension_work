@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.shortcuts import redirect
 
 from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
 
@@ -51,3 +52,9 @@ class MaintenanceAdmin(admin.ModelAdmin):
     list_filter = ('owner', )
     list_per_page = 10
     search_fields = ('owner', )
+
+    def response_add(self, request, obj, post_url_continue=None):
+        return redirect(f'/send-email/{obj.id}/')
+
+    def response_change(self, request, obj):
+        return redirect(f'/send-email/{obj.id}/')
