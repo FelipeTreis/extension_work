@@ -74,5 +74,6 @@ class MaintenanceSerializer(serializers.ModelSerializer):
 
     owner = serializers.CharField()
     vehicle = serializers.CharField()
+    service = ServiceSerializer(read_only=True, many=True)
     date = serializers.CharField()
     next_date = serializers.CharField()
