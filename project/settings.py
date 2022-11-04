@@ -91,6 +91,7 @@ DATABASES = {
         'PORT': config('POSTGRES_PORT'),
     }
 }
+DATABASE_URL = config('DATABASE_URL')
 
 
 # Password validation
