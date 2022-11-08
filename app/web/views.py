@@ -1,9 +1,10 @@
-from app.models import Maintenance
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+
+from app.models import Maintenance
 
 
 def home(request):
@@ -20,7 +21,7 @@ def send_email(request, id):
     })
     text_content = strip_tags(html_content)
 
-    email = EmailMultiAlternatives(mail_title, text_content, settings.EMAIL_HOST_USER, [request.user.email])
+    email = EmailMultiAlternatives(mail_title, text_content, settings.EMAIL_HOST_USER, [data.owner.email])
     email.attach_alternative(html_content, 'text/html')
     email.send()
 
