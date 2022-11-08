@@ -12,7 +12,7 @@ def expiration():
 
 
 class Brand(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Brand(models.Model):
 
 
 class AutoModel(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=VEHICLE_TYPE_CHOICES, default='', null=False, blank=False)
     is_active = models.BooleanField(default=False)
@@ -46,7 +46,7 @@ class Vehicle(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     value = models.IntegerField()
     is_active = models.BooleanField(default=False)
 
