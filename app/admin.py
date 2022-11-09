@@ -12,6 +12,7 @@ class BrandAdmin(admin.ModelAdmin):
     list_filter = ('name', )
     list_per_page = 10
     search_fields = ('name', )
+    ordering = ['name', ]
 
 
 @admin.register(AutoModel)
@@ -22,6 +23,7 @@ class AutoModelAdmin(admin.ModelAdmin):
     list_filter = ('name', 'brand', )
     list_per_page = 10
     search_fields = ('name', 'brand', )
+    ordering = ['name', ]
 
 
 @admin.register(Vehicle)
@@ -32,6 +34,7 @@ class VehicleAdmin(admin.ModelAdmin):
     list_filter = ('owner', 'model', 'brand', )
     list_per_page = 10
     search_fields = ('vehicle', 'licence_plate', )
+    ordering = ['owner', ]
 
 
 @admin.register(Service)
@@ -42,6 +45,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ('name', )
     list_per_page = 10
     search_fields = ('name', 'value')
+    ordering = ['name', ]
 
 
 @admin.register(Maintenance)
@@ -52,6 +56,7 @@ class MaintenanceAdmin(admin.ModelAdmin):
     list_filter = ('owner', )
     list_per_page = 10
     search_fields = ('owner', )
+    ordering = ['owner', ]
 
     def response_add(self, request, obj, post_url_continue=None):
         return redirect(f'/send-email/{obj.id}/')
