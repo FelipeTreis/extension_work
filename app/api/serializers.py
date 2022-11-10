@@ -1,6 +1,7 @@
-from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
 from django.contrib.auth.models import User
 from rest_framework import serializers
+
+from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
 
 
 class UserSerializer(serializers.ModelSerializer):

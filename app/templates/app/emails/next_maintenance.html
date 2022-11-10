@@ -1,18 +1,20 @@
-<h1>Next Maintenance</h1>
+{% load i18n %}
+
+<h1>{% translate "Next Maintenance" %}</h1>
 
 <p>
-    Hello, {{ data.owner }}<br>
-    your next maintenance will be on {{ data.next_date }}<br><br>
+    {% translate "Hello" %}, {{ data.owner }}<br>
+    {% translate "your next maintenance will be on " %}{{ data.next_date }}<br><br>
 <p/>
 
 <p>
-    Last maintenance information:
+    {% translate "Last maintenance information:" %}
     <ul>
-        <li>Latest maintenance: {{ data.date }}</li>
-        <li>Vehicle: {{ data.vehicle }}</li>
-        <li>Vehicle kilometer: {{ data.km_vehicle }}</li>
-        <li>Maintenance value: {{ data.full_value }}</li>
+        <li>{% translate "Latest maintenance: " %}{{ data.date }}</li>
+        <li>{% translate "Vehicle: " %}{{ data.vehicle }}</li>
+        <li>{% translate "Vehicle kilometer: " %}{{ data.km_vehicle }}</li>
+        <li>{% translate "Vehicle kilometer: " %}{{ data.full_value }}</li>
     </ul> 
 
-    We are waiting your return!!!
+    {% translate "We are waiting your return!!!" %}
 </p>

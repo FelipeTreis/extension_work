@@ -13,7 +13,8 @@ RUN apk update && \
     apk add --virtual build-essential gcc python3-dev musl-dev && \
     apk add --no-cache postgresql-libs && \
     apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    apk --purge del .build-deps
+    apk --purge del .build-deps && \
+    apk add gettext
 
 # Copy libs
 COPY requirements.txt . 
