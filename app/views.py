@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
@@ -7,11 +8,13 @@ from django.utils.html import strip_tags
 from app.models import Maintenance
 
 
+@login_required(login_url='users:login_user', redirect_field_name='next')
 def home(request):
     data = Maintenance.objects.filter(is_finished=True, owner=request.user).order_by('-id')
     return render(request, 'templates/app/pages/home.html', context={'contents': data})
 
 
+@login_required(login_url='users:login_user', redirect_field_name='next')
 def content(request, id):
     data = get_object_or_404(Maintenance, pk=id, is_finished=True)
     return render(request, 'templates/app/pages/content_view.html', context={'content': data, 'is_detail_view': True})
