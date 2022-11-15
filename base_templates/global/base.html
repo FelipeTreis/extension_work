@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'app/partials/head.html' %}
+    <title>My Maintenance|{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    {% include 'app/partials/header.html' %}
+    {% block content %}{% endblock content %}
+    {% include 'app/partials/footer.html' %}
+</body>
+</html>
