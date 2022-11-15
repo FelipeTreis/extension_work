@@ -1,13 +1,14 @@
-from app.api.serializers import (AutoModelSerializer, BrandSerializer,
-                                 MaintenanceSerializer, ServiceSerializer,
-                                 UserSerializer, VehicleSerializer)
-from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
 from decouple import config
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import (IsAdminUser, IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
+
+from api.serializers import (AutoModelSerializer, BrandSerializer,
+                             MaintenanceSerializer, ServiceSerializer,
+                             UserSerializer, VehicleSerializer)
+from app.models import AutoModel, Brand, Maintenance, Service, Vehicle
 
 
 class Pagination(PageNumberPagination):

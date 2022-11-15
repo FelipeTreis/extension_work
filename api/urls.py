@@ -1,8 +1,9 @@
-from app.api import viewsets
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
+
+from api import viewsets
 
 app_name = 'api'
 

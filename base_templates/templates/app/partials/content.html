@@ -2,7 +2,7 @@
     <div class="content-title-container">
         {% if is_detail_view is not True %}
             <div class="main-content">
-                <a class="content-list" href="{% url 'web:content' content.id%}">{{ content.vehicle }}</a>
+                <a class="content-list" href="{% url 'app:content' content.id%}">{{ content.vehicle }}</a>
             </div>
         {% endif %}
     </div>
@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="main-content">
-            <a class="content-list" href="{% url 'web:home' %}"><i class="fas fa-backward"></i> back home</a>
+            <a class="content-list" href="{% url 'app:home' %}"><i class="fas fa-backward"></i> back home</a>
         </div>
     {% endif %}
 </div>

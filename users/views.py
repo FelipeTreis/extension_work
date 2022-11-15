@@ -11,7 +11,7 @@ from users.forms import LoginForm, RegisterForm
 def register(request):
     register_form_data = request.session.get('register_form_data', None)
     form = RegisterForm(register_form_data)
-    return render(request, 'app/pages/register.html', {'form': form, 'form_action': reverse('users:register_create'), })
+    return render(request, 'templates/app/pages/register.html', {'form': form, 'form_action': reverse('users:register_create'), })
 
 
 def register_create(request):
@@ -35,7 +35,7 @@ def register_create(request):
 
 def login_user(request):
     form = LoginForm()
-    return render(request, 'app/pages/login.html', {'form': form, 'form_action': reverse('users:login_create'), })
+    return render(request, 'templates/app/pages/login.html', {'form': form, 'form_action': reverse('users:login_create'), })
 
 
 def login_create(request):
