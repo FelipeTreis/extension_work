@@ -1,1 +1,11 @@
-hello
+{% extends 'global/base.html' %}
+
+{% block title %} | Home {% endblock title %}
+
+{% block content %}
+    {% for content in contents %}
+        {% include 'app/partials/content.html' %}
+    {% empty %}
+        <h1>Didn't find here!</h1>
+    {% endfor %}
+{% endblock content %}
