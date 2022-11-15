@@ -76,7 +76,7 @@ class MaintenanceAdmin(admin.ModelAdmin):
     actions = [send_email_action]
 
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect(f'/send-email/{obj.id}/')
+        return redirect(f'/app/send-email/{obj.id}/')
 
     def response_change(self, request, obj):
-        return redirect(f'/send-email/{obj.id}/')
+        return redirect(f'/app/send-email/{obj.id}/')

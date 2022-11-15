@@ -5,6 +5,7 @@
 {% block content %}
     <div class="main-content center container">
         <h2>Login</h2>
+        <p><a class="plaintext-button" href="{% url 'users:register' %}">Click here</a> to register a new user</p>
         {% if request.user.is_authenticated %}
             <div>You are logged with {{ request.user.username }}
                 <form class="inline-form" action="{% url 'users:logout' %}" method="">
@@ -12,6 +13,9 @@
                     <input type="hidden", name="username" value="{{ request.user.username }}">
                     <button class="plaintext-button" type="submit">click here</button>
                 </form> to logout.
+            </div><br>
+            <div>
+                <h2><a class="plaintext-button" href="{% url 'app:home' %}">Go to home</a></h2>
             </div>
         {% endif %}
     </div>

@@ -5,7 +5,7 @@
 {% block content %}
     <div class="main-content center container">
         <h2>Register</h2>
-        <p>Click <a href="{% url 'users:login_user' %}">here</a> to log in.</p>
+        <p>Click <a class="plaintext-button" href="{% url 'users:login_user' %}">here</a> to log in.</p>
     </div>
     {% include 'templates/app/partials/messages.html' %}
     {% include 'templates/app/partials/form.html' %}
