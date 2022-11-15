@@ -8,7 +8,7 @@
         <p><a class="plaintext-button" href="{% url 'users:register' %}">Click here</a> to register a new user</p>
         {% if request.user.is_authenticated %}
             <div>You are logged with {{ request.user.username }}
-                <form class="inline-form" action="{% url 'users:logout' %}" method="">
+                <form class="inline-form" action="{% url 'users:logout' %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden", name="username" value="{{ request.user.username }}">
                     <button class="plaintext-button" type="submit">click here</button>
