@@ -1,0 +1,24 @@
+<div class="content content-list-item">
+    <div class="content-title-container">
+        {% if is_detail_view is not True %}
+            <div class="main-content">
+                <a class="content-list" href="{% url 'web:content' content.id%}">{{ content.vehicle }}</a>
+            </div>
+        {% endif %}
+    </div>
+    {% if is_detail_view is True %}
+        <div class="main-content-text">
+            <ul>
+                <li>Owner: {{ content.owner }}</li>
+                <li>Vehicle: {{ content.vehicle }}</li>
+                <li>Kilometer: {{ content.km_vehicle }}</li>
+                <li>Date: {{ content.date }}</li>
+                <li>Next date:{{ content.next_date }}</li>
+                <li>Services value: {{ content.full_value }}</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <a class="content-list" href="{% url 'web:home' %}"><i class="fas fa-backward"></i> back home</a>
+        </div>
+    {% endif %}
+</div>
