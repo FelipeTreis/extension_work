@@ -13,6 +13,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from decouple import Csv, config
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
     # Project Apps
     'app',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +65,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'base_templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,14 +86,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config('POSTGRES_ENGINE'),
+#         'NAME': config('POSTGRES_NAME'),
+#         'USER': config('POSTGRES_USER'),
+#         'PASSWORD': config('POSTGRES_PASSWORD'),
+#         'HOST': config('POSTGRES_HOST'),
+#         'PORT': config('POSTGRES_PORT'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': config('POSTGRES_ENGINE'),
-        'NAME': config('POSTGRES_NAME'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': config('POSTGRES_PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -134,11 +145,24 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'base_static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Flash Messages
+
+MESSAGE_TAGS = {
+    constants.SUCCESS: 'message-success',
+    constants.ERROR: 'message-error',
+    constants.INFO: 'message-info',
+    constants.WARNING: 'message-warning',
+    constants.DEBUG: 'message-debug',
+}
 
 # E-mail Send
 
