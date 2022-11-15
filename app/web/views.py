@@ -8,7 +8,13 @@ from app.models import Maintenance
 
 
 def home(request):
-    return render(request, 'app/pages/home.html')
+    data = Maintenance.objects.filter(is_finished=True, owner=request.user).order_by('-id')
+    return render(request, 'app/pages/home.html', context={'contents': data})
+
+
+def content(request, id):
+    data = get_object_or_404(Maintenance, pk=id, is_finished=True)
+    return render(request, 'app/pages/content_view.html', context={'content': data, 'is_detail_view': True})
 
 
 def send_email(request, id):
