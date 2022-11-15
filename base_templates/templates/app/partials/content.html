@@ -1,13 +1,23 @@
 <div class="content content-list-item">
     <div class="content-title-container">
         {% if is_detail_view is not True %}
-            <div class="main-content">
-                <a class="content-list" href="{% url 'app:content' content.id%}">{{ content.vehicle }}</a>
+            <div class="content-title-container">
+                <h2 class="content-title">
+                    <a href="{% url 'app:content' content.id%}">{{ content.vehicle }}</a>
+                </h2>
             </div>
         {% endif %}
     </div>
+    {% if is_detail_view is not True %}
+        <footer class="content-footer">
+            <a class="content-read-more button button-dark button-full-width" href="{% url 'app:content' content.id %}">
+                <i class="fas fa-eye"></i>
+                <span>See more...</span>
+            </a>
+        </footer>
+    {% endif %}
     {% if is_detail_view is True %}
-        <div class="main-content-text">
+        <div class="main-information">
             <ul>
                 <li>Owner: {{ content.owner }}</li>
                 <li>Vehicle: {{ content.vehicle }}</li>
@@ -17,8 +27,8 @@
                 <li>Services value: {{ content.full_value }}</li>
             </ul>
         </div>
-        <div class="main-content">
-            <a class="content-list" href="{% url 'app:home' %}"><i class="fas fa-backward"></i> back home</a>
+        <div class="main-content padding">
+            <a class="content-list back" href="{% url 'app:home' %}"><i class="fas fa-backward"></i> back home</a>
         </div>
     {% endif %}
 </div>

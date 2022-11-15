@@ -3,9 +3,13 @@
 {% block title %} | Home {% endblock title %}
 
 {% block content %}
+<div class="main-content main-content-list container">
     {% for content in contents %}
         {% include 'templates/app/partials/content.html' %}
     {% empty %}
-        <h1>Didn't find here!</h1>
+        <div class="margin">
+            <h1>Didn't find here!</h1>
+        </div>
     {% endfor %}
+</div>
 {% endblock content %}
