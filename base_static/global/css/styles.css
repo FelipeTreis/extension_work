@@ -82,6 +82,7 @@ h6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: var(--spacing-gutter-large);
+  padding-top: 2rem;
 }
 
 /* Header */
@@ -117,7 +118,7 @@ h6 {
 }
 
 .content-title-container {
-  padding: var(--spacing-gutter-medium);
+  padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: center;
 }

@@ -43,7 +43,6 @@ def login_create(request):
         raise Http404()
 
     form = LoginForm(request.POST)
-    login_url = reverse('users:login_user')
 
     if form.is_valid():
         authenticated_user = authenticate(
@@ -57,7 +56,7 @@ def login_create(request):
             messages.error(request, 'Invalid credentials')
     else:
         messages.error(request, 'Invalid username or password')
-    return redirect(login_url)
+    return redirect(reverse('users:login_user'))
 
 
 @login_required(login_url='users:login_user', redirect_field_name='next')
