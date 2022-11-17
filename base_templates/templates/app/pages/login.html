@@ -9,5 +9,7 @@
         {% include 'templates/app/partials/login_message.html' %}
     </div>
     {% include 'templates/app/partials/messages.html' %}
-    {% include 'templates/app/partials/form.html' %}
+    {% if not user.is_authenticated %}
+        {% include 'templates/app/partials/form.html' %}
+    {% endif %}
 {% endblock content %}
