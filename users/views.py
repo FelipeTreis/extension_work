@@ -56,7 +56,7 @@ def login_create(request):
             messages.error(request, 'Invalid credentials')
     else:
         messages.error(request, 'Invalid username or password')
-    return redirect(reverse('users:login_user'))
+    return redirect(reverse('users:dashboard'))
 
 
 @login_required(login_url='users:login_user', redirect_field_name='next')
@@ -69,3 +69,8 @@ def logout_user(request):
 
     logout(request)
     return redirect(reverse('users:login_user'))
+
+
+@login_required(login_url='users:login_user', redirect_field_name='next')
+def dashboard(request):
+    return render(request, 'templates/app/pages/dashboard.html')

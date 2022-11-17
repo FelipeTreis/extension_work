@@ -250,6 +250,12 @@ h6 {
   padding-top: 0.8rem;
 }
 
+/* Form message */
+
+.login-message {
+  margin: 1rem 0;
+}
+
 /* Messages */
 .messages-container {
   display: flex;

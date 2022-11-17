@@ -1,13 +1,11 @@
 {% extends 'global/base.html' %}
 
-{% block title %}Login{% endblock title %}
+{% block title %}Dashboard - {{ request.user }}{% endblock title %}
 
 {% block content %}
     <div class="main-content center container">
-        <h2>Login</h2>
-        <p><a class="plaintext-button" href="{% url 'users:register' %}">Click here</a> to register a new user</p>
+        <h2>Dashboard - {{ request.user }}</h2>
         {% include 'templates/app/partials/login_message.html' %}
     </div>
     {% include 'templates/app/partials/messages.html' %}
-    {% include 'templates/app/partials/form.html' %}
 {% endblock content %}
