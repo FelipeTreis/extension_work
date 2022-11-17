@@ -5,6 +5,7 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from app.models import Maintenance
 from users.forms import LoginForm, RegisterForm
 
 
@@ -73,4 +74,5 @@ def logout_user(request):
 
 @login_required(login_url='users:login_user', redirect_field_name='next')
 def dashboard(request):
-    return render(request, 'templates/app/pages/dashboard.html')
+    data = Maintenance.objects.filter(is_finished=True, owner=request.user)
+    return render(request, 'templates/app/pages/dashboard.html', {'data': data})

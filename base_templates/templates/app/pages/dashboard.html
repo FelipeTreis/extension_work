@@ -6,6 +6,18 @@
     <div class="main-content center container">
         <h2>Dashboard - {{ request.user }}</h2>
         {% include 'templates/app/partials/login_message.html' %}
+        <div class="dashboard-container">
+            <h3>Your Maintenances</h3>
+            <ul>
+                {% for data in data %}
+                    <a href="{% url 'app:content' data.id%}">{{ data.vehicle }}</a><br><br>
+                {% empty %}
+                    <li>
+                        <p>You don't have any maintenance registered, register one.</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     {% include 'templates/app/partials/messages.html' %}
 {% endblock content %}
