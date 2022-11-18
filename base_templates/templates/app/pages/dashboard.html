@@ -10,7 +10,7 @@
             <h3>Your Maintenances</h3>
             <ul>
                 {% for data in data %}
-                    <a href="{% url 'app:content' data.id%}">{{ data.vehicle }}</a><br><br>
+                    <a href="{% url 'users:dashboard_maintenance_edit' data.id%}">{{ data.vehicle }}</a><br><br>
                 {% empty %}
                     <li>
                         <p>You don't have any maintenance registered, register one.</p>

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from app.models import Maintenance
-from users.forms import LoginForm, RegisterForm
+from users.forms import LoginForm, MaintenanceForm, RegisterForm
 
 
 def register(request):
@@ -76,3 +76,17 @@ def logout_user(request):
 def dashboard(request):
     data = Maintenance.objects.filter(is_finished=True, owner=request.user)
     return render(request, 'templates/app/pages/dashboard.html', {'data': data})
+
+
+@login_required(login_url='users:login_user', redirect_field_name='next')
+def dashboard_maintenance_edit(request, id):
+    data = Maintenance.objects.get(is_finished=True, owner=request.user, pk=id)
+    form = MaintenanceForm(request.POST or None, instance=data)
+
+    if form.is_valid():
+        data.owner = request.user
+        data.save()
+        messages.success(request, 'Your maintenance has been successfully saved!')
+        return redirect(reverse('users:dashboard'))
+
+    return render(request, 'templates/app/pages/dashboard_maintenance.html', {'form': form, 'data': data})
