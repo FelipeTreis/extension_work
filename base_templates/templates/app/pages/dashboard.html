@@ -5,6 +5,7 @@
 {% block content %}
     <div class="main-content center container">
         <h2>Dashboard - {{ request.user }}</h2>
+        <a class="plaintext-button" href="{% url 'users:dashboard_maintenance_new' %}">add maintenance</a>
         {% include 'templates/app/partials/login_message.html' %}
         <div class="dashboard-container">
             <h3>Your Maintenances</h3>
