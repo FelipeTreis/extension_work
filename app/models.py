@@ -56,9 +56,9 @@ class Service(models.Model):
 
 class Maintenance(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True)
     service = models.ManyToManyField(Service)
-    km_vehicle = models.IntegerField()
+    km_vehicle = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
     next_date = models.DateField(default=expiration, auto_created=True)
     is_started = models.BooleanField(default=False)
