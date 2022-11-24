@@ -29,8 +29,6 @@ class MaintenanceForm(forms.ModelForm):
         super_clean = super().clean(*args, **kwargs)
         cleaned_data = self.cleaned_data
         owner = cleaned_data.get('owner')
-        vehicle = cleaned_data.get('vehicle')
-        service = cleaned_data.get('service')
 
         if owner != request.user:
             self._errors['owner'].append('Invalid owner, put your user')
