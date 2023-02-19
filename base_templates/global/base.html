@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,11 @@
     <title>My Maintenance{% block title %}{% endblock title %}</title>
 </head>
 <body>
+    {% include 'templates/app/partials/menu.html'%}
     {% include 'templates/app/partials/header.html' %}
     {% block content %}{% endblock content %}
     {% include 'templates/app/partials/footer.html' %}
+
+    <script src="{% static 'global/js/script.js' %}"></script>
 </body>
 </html>
