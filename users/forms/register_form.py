@@ -24,6 +24,7 @@ class RegisterForm(forms.ModelForm):
     )
     password2 = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={'placeholder': 'Repeat your password'}),
+        label='Repeat your password',
     )
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=True)
@@ -59,7 +60,7 @@ class RegisterForm(forms.ModelForm):
         password2 = cleaned_data.get('password2')
 
         if password != password2:
-            password_confirmation_error = ValidationError('Password and password2 must be equal', code='invalid')
+            password_confirmation_error = ValidationError('Passwords must be equal', code='invalid')
             raise ValidationError({
                 'password': password_confirmation_error,
                 'password2': [
