@@ -429,6 +429,11 @@ h6 {
   padding-bottom: 1rem;
 }
 
+.padding_2 {
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+}
+
 .back {
   font-family: var(--font-headings);
   font-size: 1.6rem;

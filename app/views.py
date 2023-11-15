@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
+from django.urls import reverse
 from django.utils.html import strip_tags
 
 from app.models import Maintenance
@@ -34,4 +35,5 @@ def send_email(request, id):
     email.attach_alternative(html_content, 'text/html')
     email.send()
 
-    return render(request, 'templates/app/emails/sent_email.html')
+    return redirect(reverse('users:dashboard'))
+    # return render(request, 'templates/app/emails/sent_email.html')

@@ -87,6 +87,7 @@ def dashboard_maintenance_new(request):
         data.owner = request.user
         data.save()
         messages.success(request, 'Your maintenance has been successfully saved!')
+        # return redirect(f'/app/send-email/{data.id}/')
         return redirect(reverse('users:dashboard'))
 
     return render(request, 'templates/app/pages/dashboard_maintenance.html',

@@ -29,6 +29,9 @@
         </div>
         <div class="main-content padding">
             <a class="content-list back" href="{% url 'app:home' %}"><i class="fas fa-backward"></i> return</a>
+        </div> 
+        <div class="main-content padding_2">
+            <a class="content-list back" href="{% url 'app:send_email' content.id%}"> Send e-mail</a>
         </div>
     {% endif %}
 </div>
